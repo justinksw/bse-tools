@@ -1,0 +1,48 @@
+[chromium-320] PASS=true sx=false scroll=320/320 badge=PREVIEW
+  title=BSE Tools | section=Tools
+  psychart href=https://justinksw.github.io/psychrometric-chart/ match=true
+  soon isA=false hrefAttr=false nav=false
+  ctas=[{"text":"Open · 開啟","w":266,"h":44},{"text":"Coming soon · 即將推出","w":266,"h":44}] ctaOk=true
+  logos=["logos/bse-tools.svg:150","logos/psychart.svg:150","logos/p1-dp.svg:150"] logosOk=true
+  tokens={"ink":"#1E2A50","canvas":"#EEF1F4","accent":"#C45C26"} tokensOk=true
+  shot=/workspace/bse-tools/preview-proof/chromium-320.png
+[chromium-390] PASS=true sx=false scroll=390/390 badge=PREVIEW
+  title=BSE Tools | section=Tools
+  psychart href=https://justinksw.github.io/psychrometric-chart/ match=true
+  soon isA=false hrefAttr=false nav=false
+  ctas=[{"text":"Open · 開啟","w":336,"h":44},{"text":"Coming soon · 即將推出","w":336,"h":44}] ctaOk=true
+  logos=["logos/bse-tools.svg:150","logos/psychart.svg:150","logos/p1-dp.svg:150"] logosOk=true
+  tokens={"ink":"#1E2A50","canvas":"#EEF1F4","accent":"#C45C26"} tokensOk=true
+  shot=/workspace/bse-tools/preview-proof/chromium-390.png
+[chromium-430] PASS=true sx=false scroll=430/430 badge=PREVIEW
+  title=BSE Tools | section=Tools
+  psychart href=https://justinksw.github.io/psychrometric-chart/ match=true
+  soon isA=false hrefAttr=false nav=false
+  ctas=[{"text":"Open · 開啟","w":376,"h":44},{"text":"Coming soon · 即將推出","w":376,"h":44}] ctaOk=true
+  logos=["logos/bse-tools.svg:150","logos/psychart.svg:150","logos/p1-dp.svg:150"] logosOk=true
+  tokens={"ink":"#1E2A50","canvas":"#EEF1F4","accent":"#C45C26"} tokensOk=true
+  shot=/workspace/bse-tools/preview-proof/chromium-430.png
+[webkit-320] PASS=true sx=false scroll=320/320 badge=PREVIEW
+  title=BSE Tools | section=Tools
+  psychart href=https://justinksw.github.io/psychrometric-chart/ match=true
+  soon isA=false hrefAttr=false nav=false
+  ctas=[{"text":"Open · 開啟","w":266,"h":44},{"text":"Coming soon · 即將推出","w":266,"h":44}] ctaOk=true
+  logos=["logos/bse-tools.svg:150","logos/psychart.svg:150","logos/p1-dp.svg:150"] logosOk=true
+  tokens={"ink":"#1E2A50","canvas":"#EEF1F4","accent":"#C45C26"} tokensOk=true
+  shot=/workspace/bse-tools/preview-proof/webkit-320.png
+[webkit-390] PASS=true sx=false scroll=390/390 badge=PREVIEW
+  title=BSE Tools | section=Tools
+  psychart href=https://justinksw.github.io/psychrometric-chart/ match=true
+  soon isA=false hrefAttr=false nav=false
+  ctas=[{"text":"Open · 開啟","w":336,"h":44},{"text":"Coming soon · 即將推出","w":336,"h":44}] ctaOk=true
+  logos=["logos/bse-tools.svg:150","logos/psychart.svg:150","logos/p1-dp.svg:150"] logosOk=true
+  tokens={"ink":"#1E2A50","canvas":"#EEF1F4","accent":"#C45C26"} tokensOk=true
+  shot=/workspace/bse-tools/preview-proof/webkit-390.png
+[webkit-430] PASS=true sx=false scroll=430/430 badge=PREVIEW
+  title=BSE Tools | section=Tools
+  psychart href=https://justinksw.github.io/psychrometric-chart/ match=true
+  soon isA=false hrefAttr=false nav=false
+  ctas=[{"text":"Open · 開啟","w":376,"h":44},{"text":"Coming soon · 即將推出","w":376,"h":44}] ctaOk=true
+  logos=["logos/bse-tools.svg:150","logos/psychart.svg:150","logos/p1-dp.svg:150"] logosOk=true
+  tokens={"ink":"#1E2A50","canvas":"#EEF1F4","accent":"#C45C26"} tokensOk=true
+  shot=/workspace/bse-tools/preview-proof/webkit-430.png

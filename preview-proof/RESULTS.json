@@ -1,0 +1,409 @@
+{
+  "allPass": true,
+  "sha": "945dd19",
+  "base": "http://127.0.0.1:8877/",
+  "results": [
+    {
+      "tag": "chromium-320",
+      "pass": true,
+      "noSx": true,
+      "previewOk": true,
+      "titleOk": true,
+      "sectionOk": true,
+      "psychOk": true,
+      "soonOk": true,
+      "ctaOk": true,
+      "logosOk": true,
+      "tokensOk": true,
+      "noteOk": true,
+      "metrics": {
+        "sx": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "badge": "PREVIEW",
+        "h1": "BSE Tools",
+        "sub": "屋宇裝備工具 · MVAC · teaching",
+        "section": "Tools",
+        "psychHref": "https://justinksw.github.io/psychrometric-chart/",
+        "psychIsA": true,
+        "p1IsA": false,
+        "p1HasHref": false,
+        "logos": [
+          {
+            "src": "logos/bse-tools.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/psychart.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/p1-dp.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          }
+        ],
+        "ctas": [
+          {
+            "text": "Open · 開啟",
+            "w": 266,
+            "h": 44
+          },
+          {
+            "text": "Coming soon · 即將推出",
+            "w": 266,
+            "h": 44
+          }
+        ],
+        "note": "Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.",
+        "sheetPad": "12px",
+        "tokens": {
+          "ink": "#1E2A50",
+          "canvas": "#EEF1F4",
+          "accent": "#C45C26"
+        },
+        "psychartMatch": true
+      }
+    },
+    {
+      "tag": "chromium-390",
+      "pass": true,
+      "noSx": true,
+      "previewOk": true,
+      "titleOk": true,
+      "sectionOk": true,
+      "psychOk": true,
+      "soonOk": true,
+      "ctaOk": true,
+      "logosOk": true,
+      "tokensOk": true,
+      "noteOk": true,
+      "metrics": {
+        "sx": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "badge": "PREVIEW",
+        "h1": "BSE Tools",
+        "sub": "屋宇裝備工具 · MVAC · teaching",
+        "section": "Tools",
+        "psychHref": "https://justinksw.github.io/psychrometric-chart/",
+        "psychIsA": true,
+        "p1IsA": false,
+        "p1HasHref": false,
+        "logos": [
+          {
+            "src": "logos/bse-tools.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/psychart.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/p1-dp.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          }
+        ],
+        "ctas": [
+          {
+            "text": "Open · 開啟",
+            "w": 336,
+            "h": 44
+          },
+          {
+            "text": "Coming soon · 即將推出",
+            "w": 336,
+            "h": 44
+          }
+        ],
+        "note": "Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.",
+        "sheetPad": "12px",
+        "tokens": {
+          "ink": "#1E2A50",
+          "canvas": "#EEF1F4",
+          "accent": "#C45C26"
+        },
+        "psychartMatch": true
+      }
+    },
+    {
+      "tag": "chromium-430",
+      "pass": true,
+      "noSx": true,
+      "previewOk": true,
+      "titleOk": true,
+      "sectionOk": true,
+      "psychOk": true,
+      "soonOk": true,
+      "ctaOk": true,
+      "logosOk": true,
+      "tokensOk": true,
+      "noteOk": true,
+      "metrics": {
+        "sx": false,
+        "scrollWidth": 430,
+        "clientWidth": 430,
+        "badge": "PREVIEW",
+        "h1": "BSE Tools",
+        "sub": "屋宇裝備工具 · MVAC · teaching",
+        "section": "Tools",
+        "psychHref": "https://justinksw.github.io/psychrometric-chart/",
+        "psychIsA": true,
+        "p1IsA": false,
+        "p1HasHref": false,
+        "logos": [
+          {
+            "src": "logos/bse-tools.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/psychart.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/p1-dp.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          }
+        ],
+        "ctas": [
+          {
+            "text": "Open · 開啟",
+            "w": 376,
+            "h": 44
+          },
+          {
+            "text": "Coming soon · 即將推出",
+            "w": 376,
+            "h": 44
+          }
+        ],
+        "note": "Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.",
+        "sheetPad": "12px",
+        "tokens": {
+          "ink": "#1E2A50",
+          "canvas": "#EEF1F4",
+          "accent": "#C45C26"
+        },
+        "psychartMatch": true
+      }
+    },
+    {
+      "tag": "webkit-320",
+      "pass": true,
+      "noSx": true,
+      "previewOk": true,
+      "titleOk": true,
+      "sectionOk": true,
+      "psychOk": true,
+      "soonOk": true,
+      "ctaOk": true,
+      "logosOk": true,
+      "tokensOk": true,
+      "noteOk": true,
+      "metrics": {
+        "sx": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "badge": "PREVIEW",
+        "h1": "BSE Tools",
+        "sub": "屋宇裝備工具 · MVAC · teaching",
+        "section": "Tools",
+        "psychHref": "https://justinksw.github.io/psychrometric-chart/",
+        "psychIsA": true,
+        "p1IsA": false,
+        "p1HasHref": false,
+        "logos": [
+          {
+            "src": "logos/bse-tools.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/psychart.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/p1-dp.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          }
+        ],
+        "ctas": [
+          {
+            "text": "Open · 開啟",
+            "w": 266,
+            "h": 44
+          },
+          {
+            "text": "Coming soon · 即將推出",
+            "w": 266,
+            "h": 44
+          }
+        ],
+        "note": "Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.",
+        "sheetPad": "12px",
+        "tokens": {
+          "ink": "#1E2A50",
+          "canvas": "#EEF1F4",
+          "accent": "#C45C26"
+        },
+        "psychartMatch": true
+      }
+    },
+    {
+      "tag": "webkit-390",
+      "pass": true,
+      "noSx": true,
+      "previewOk": true,
+      "titleOk": true,
+      "sectionOk": true,
+      "psychOk": true,
+      "soonOk": true,
+      "ctaOk": true,
+      "logosOk": true,
+      "tokensOk": true,
+      "noteOk": true,
+      "metrics": {
+        "sx": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "badge": "PREVIEW",
+        "h1": "BSE Tools",
+        "sub": "屋宇裝備工具 · MVAC · teaching",
+        "section": "Tools",
+        "psychHref": "https://justinksw.github.io/psychrometric-chart/",
+        "psychIsA": true,
+        "p1IsA": false,
+        "p1HasHref": false,
+        "logos": [
+          {
+            "src": "logos/bse-tools.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/psychart.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/p1-dp.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          }
+        ],
+        "ctas": [
+          {
+            "text": "Open · 開啟",
+            "w": 336,
+            "h": 44
+          },
+          {
+            "text": "Coming soon · 即將推出",
+            "w": 336,
+            "h": 44
+          }
+        ],
+        "note": "Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.",
+        "sheetPad": "12px",
+        "tokens": {
+          "ink": "#1E2A50",
+          "canvas": "#EEF1F4",
+          "accent": "#C45C26"
+        },
+        "psychartMatch": true
+      }
+    },
+    {
+      "tag": "webkit-430",
+      "pass": true,
+      "noSx": true,
+      "previewOk": true,
+      "titleOk": true,
+      "sectionOk": true,
+      "psychOk": true,
+      "soonOk": true,
+      "ctaOk": true,
+      "logosOk": true,
+      "tokensOk": true,
+      "noteOk": true,
+      "metrics": {
+        "sx": false,
+        "scrollWidth": 430,
+        "clientWidth": 430,
+        "badge": "PREVIEW",
+        "h1": "BSE Tools",
+        "sub": "屋宇裝備工具 · MVAC · teaching",
+        "section": "Tools",
+        "psychHref": "https://justinksw.github.io/psychrometric-chart/",
+        "psychIsA": true,
+        "p1IsA": false,
+        "p1HasHref": false,
+        "logos": [
+          {
+            "src": "logos/bse-tools.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/psychart.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          },
+          {
+            "src": "logos/p1-dp.svg",
+            "w": 150,
+            "h": 150,
+            "complete": true
+          }
+        ],
+        "ctas": [
+          {
+            "text": "Open · 開啟",
+            "w": 376,
+            "h": 44
+          },
+          {
+            "text": "Coming soon · 即將推出",
+            "w": 376,
+            "h": 44
+          }
+        ],
+        "note": "Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.",
+        "sheetPad": "12px",
+        "tokens": {
+          "ink": "#1E2A50",
+          "canvas": "#EEF1F4",
+          "accent": "#C45C26"
+        },
+        "psychartMatch": true
+      }
+    }
+  ]
+}
