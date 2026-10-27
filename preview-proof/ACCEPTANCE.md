@@ -1,8 +1,8 @@
 # BSE Tools hub — preview acceptance (brief-v2 §8)
 
 Preview URL: https://justinksw.github.io/bse-tools/
-Proven against: local serve of same SHA `945dd19` (Pages first-build still deploying at proof time)
-SHA: `4af1422` (site from `945dd19`; tip includes proof)
+Proven against: Pages preview tip (P2: SHA note + soon cursor)
+SHA: tip after P2 commit (see git log preview); site from 945dd19 + punch P2
 Pages source: `preview` /
 Proved: 2026-10-27T14:11:54.419Z (box local Asia/Hong_Kong)
 
@@ -29,3 +29,9 @@ Shots: `preview-proof/{chromium,webkit}-{320,390,430}.png`
 - Pages status `built`; source `preview` `/`.
 - Live Chromium 390 spot-check: badge=PREVIEW, psychart href OK, P1 tag=DIV, no-sx.
 - URL https://justinksw.github.io/bse-tools/
+
+
+## P2 (Celine optional, landed)
+- ACCEPTANCE SHA note refreshed to tip
+- `.card.soon { cursor: default; }`
+- No P0/P1 — clear for Justin live OK via Sua

@@ -142,6 +142,7 @@ header.appbar .sub {
   color: inherit;
 }
 .card.soon {
+  cursor: default;
   background: #F3F5F8;
 }
 .card-top {
