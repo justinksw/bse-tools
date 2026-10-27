@@ -2,7 +2,7 @@
 
 Preview URL: https://justinksw.github.io/bse-tools/
 Proven against: Pages preview tip (P2: SHA note + soon cursor)
-SHA: tip after P2 commit (see git log preview); site from 945dd19 + punch P2
+SHA: c61d293 (P2; site from 945dd19)
 Pages source: `preview` /
 Proved: 2026-10-27T14:11:54.419Z (box local Asia/Hong_Kong)
 
