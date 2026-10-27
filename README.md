@@ -2,21 +2,20 @@
 
 Entrance hub for Justin’s HK BSE / MVAC teaching tools.
 
-**Status: PREVIEW** — not live. Hold until Justin OK via Sua.  
-**Preview URL:** https://justinksw.github.io/bse-tools/  
-**Pages source:** `preview` branch `/`
+**Live:** https://justinksw.github.io/bse-tools/  
+**Pages source:** `main` branch `/`
 
 ## Tools
 
 | Tool | Status | URL |
 |---|---|---|
-| Psychrometric Chart | Live (separate repo) | https://justinksw.github.io/psychrometric-chart/ |
-| Duct / pipe ΔP | Coming soon | — |
+| Psychrometric Chart | Live | https://justinksw.github.io/psychrometric-chart/ |
+| Duct / pipe ΔP | Live | https://justinksw.github.io/pressure-drop/ |
 
 ## Branches
 
-- `preview` — hub site + PREVIEW badge (GitHub Pages)
-- `main` — placeholder until Justin live OK (do not ship final from main yet)
+- `main` — live hub (GitHub Pages)
+- `preview` — tracks main after live ship
 
 ## Design source
 

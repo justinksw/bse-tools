@@ -35,3 +35,8 @@ Shots: `preview-proof/{chromium,webkit}-{320,390,430}.png`
 - ACCEPTANCE SHA note refreshed to tip
 - `.card.soon { cursor: default; }`
 - No P0/P1 — clear for Justin live OK via Sua
+
+
+## Live ship
+
+Justin OK via Sua 2026-10-27 Asia/Hong_Kong: Pages→main / drop PREVIEW; P1 card → Open → https://justinksw.github.io/pressure-drop/
