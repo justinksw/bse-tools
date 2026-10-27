@@ -2,7 +2,7 @@
 
 Preview URL: https://justinksw.github.io/bse-tools/
 Proven against: local serve of same SHA `945dd19` (Pages first-build still deploying at proof time)
-SHA: `945dd19`
+SHA: `4af1422` (site from `945dd19`; tip includes proof)
 Pages source: `preview` /
 Proved: 2026-10-27T14:11:54.419Z (box local Asia/Hong_Kong)
 
@@ -24,3 +24,8 @@ Shots: `preview-proof/{chromium,webkit}-{320,390,430}.png`
 - P1 card is `<div class="card soon">` (not `<a>`); click does not navigate.
 - Psychart Open href = https://justinksw.github.io/psychrometric-chart/
 - Hold live / PREVIEW until Justin OK via Sua.
+
+## Live verify
+- Pages status `built`; source `preview` `/`.
+- Live Chromium 390 spot-check: badge=PREVIEW, psychart href OK, P1 tag=DIV, no-sx.
+- URL https://justinksw.github.io/bse-tools/
