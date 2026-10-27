@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BSE Tools · 屋宇裝備工具</title>
+  <meta name="description" content="BSE teaching tools hub — Psychrometric Chart and more. EN primary · °C / SI. Not a Code of Practice checker." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="logos/bse-tools.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="phone" id="app">
+    <header class="appbar">
+      <img class="mark" src="logos/bse-tools.svg" alt="" width="32" height="32" />
+      <div class="titles">
+        <h1>BSE Tools</h1>
+        <div class="sub">屋宇裝備工具 · MVAC · teaching</div>
+      </div>
+      <span class="badge">PREVIEW</span>
+    </header>
+    <p class="intro">Open a teaching calculator. EN primary · °C / SI. Not a Code of Practice checker.</p>
+
+    <section class="sheet" aria-label="Tools">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="section-label">
+        <span class="en">Tools</span>
+        <span class="zh">工具</span>
+      </div>
+
+      <div class="cards">
+        <a class="card" id="card-psychart" href="https://justinksw.github.io/psychrometric-chart/" aria-label="Open Psychrometric Chart">
+          <div class="card-top">
+            <img src="logos/psychart.svg" alt="" width="40" height="40" />
+            <div class="card-titles">
+              <span class="en">Psychrometric Chart</span>
+              <span class="zh">濕空氣線圖</span>
+            </div>
+          </div>
+          <p class="purpose">
+            OA / RA path, mix, coil, reheat — HK summer teaching.
+            <span class="zh-line">室外／回風路徑、混合、盤管、再熱（香港夏季教學）</span>
+          </p>
+          <span class="cta">Open · 開啟</span>
+        </a>
+
+        <div class="card soon" id="card-p1" aria-label="Duct pipe pressure drop coming soon">
+          <div class="card-top">
+            <img src="logos/p1-dp.svg" alt="" width="40" height="40" />
+            <div class="card-titles">
+              <span class="en">Duct / pipe ΔP</span>
+              <span class="zh">風管／水管壓降</span>
+            </div>
+          </div>
+          <p class="purpose">
+            Air duct &amp; CHW pipe — velocity, friction, fittings ΣK.
+            <span class="zh-line">風管與冷凍水管 — 流速、摩擦、管件 ΣK</span>
+          </p>
+          <span class="cta soon">Coming soon · 即將推出</span>
+        </div>
+      </div>
+
+      <p class="demo-note">Demo defaults from Beatrice (HK BSI teaching). Psychart live; P1 ΔP after brief. Not CIBSE Guide C / CoP / ductulator.</p>
+    </section>
+  </div>
+</body>
+</html>
