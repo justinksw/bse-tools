@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Venturi valve">
+  <rect width="64" height="64" rx="14" fill="#1E2A50"/>
+  <!-- body / duct silhouette -->
+  <path d="M8 22 H18 L26 28 H38 L46 22 H56 V42 H46 L38 36 H26 L18 42 H8 Z"
+        fill="none" stroke="#EEF1F4" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- cone / plunger -->
+  <path d="M28 32 L40 26 V38 Z" fill="#3A4A72" stroke="#8FA0C4" stroke-width="1.25" stroke-linejoin="round"/>
+  <!-- shaft -->
+  <path d="M40 32 H50" fill="none" stroke="#8FA0C4" stroke-width="2" stroke-linecap="round"/>
+  <!-- spring hint -->
+  <path d="M42 28 Q43.5 32 42 36 Q44.5 32 42 28" fill="none" stroke="#C45C26" stroke-width="1.75" stroke-linecap="round"/>
+  <!-- flow chevron -->
+  <path d="M12 32 H18" fill="none" stroke="#8FA0C4" stroke-width="2" stroke-linecap="round"/>
+  <path d="M15 28 L20 32 L15 36" fill="none" stroke="#8FA0C4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

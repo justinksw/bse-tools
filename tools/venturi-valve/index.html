@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Venturi valve｜文丘里風閥</title>
+  <style>
+    :root {
+      --canvas: #EEF1F4;
+      --panel: #FFFFFF;
+      --ink: #1E2A50;
+      --muted: #5A6178;
+      --line: #C8CDD8;
+      --accent: #C45C26;
+      --comfort-edge: #2E7D6E;
+      --focus: #174A7C;
+      --ok: #2E7D6E;
+      --warn-bg: #fde8d4;
+      --warn-bd: #e8b078;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: #D8DCE2;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Noto Sans TC", "PingFang TC", "Helvetica Neue", sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+    .phone {
+      width: 390px;
+      max-width: 100vw;
+      min-height: 844px;
+      height: 100dvh;
+      max-height: 100dvh;
+      margin: 0 auto;
+      background: var(--canvas);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      overflow-x: hidden;
+      position: relative;
+    }
+    @media (max-width: 430px) {
+      .phone { width: 100%; min-height: 100dvh; }
+    }
+
+    header.appbar {
+      flex: 0 0 auto;
+      padding: 6px 12px 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    header.appbar img.mark {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      flex: 0 0 auto;
+    }
+    header.appbar .titles { min-width: 0; flex: 1 1 auto; }
+    header.appbar h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+    header.appbar .sub {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    .chip-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 0 0 auto;
+      align-items: flex-end;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      color: #8a4b12;
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-bd);
+      border-radius: 999px;
+      padding: 3px 7px;
+      white-space: nowrap;
+    }
+    .badge.soft {
+      color: var(--focus);
+      background: #E8ECF5;
+      border-color: #B8C4D8;
+    }
+
+    /* Live readout strip */
+    .live {
+      flex: 0 0 auto;
+      margin: 0 10px 4px;
+      padding: 6px 8px;
+      background: #FAFBFC;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 4px;
+    }
+    .live .cell {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .live .cell .lab {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+    .live .cell .val {
+      font-size: 15px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .live .cell .val small {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-left: 2px;
+    }
+    .live .q-lead {
+      grid-column: 1 / -1;
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.25;
+      margin-top: 2px;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    .live .dp-hint {
+      grid-column: 1 / -1;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--focus);
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    .live .dp-hint[hidden] { display: none !important; }
+    .live.warn-band {
+      border-color: var(--accent);
+      background: #FFF8F2;
+    }
+    .live.warn-band .val { color: var(--accent); }
+    .band-warn-msg {
+      grid-column: 1 / -1;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.3;
+      display: none;
+    }
+    .live.warn-band .band-warn-msg { display: block; }
+
+    /* Cutaway */
+    .viz {
+      flex: 0 0 auto;
+      margin: 0 10px 4px;
+      padding: 6px 4px 4px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      position: relative;
+    }
+    .viz svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 168px;
+    }
+    .callout {
+      font-size: 9px;
+      font-weight: 700;
+      fill: var(--ink);
+    }
+    .callout.muted { fill: var(--muted); font-weight: 600; }
+    .callout.accent { fill: var(--accent); }
+    .callout.ok { fill: var(--ok); }
+    .tap-hit {
+      cursor: pointer;
+      fill: transparent;
+    }
+    .tap-hit:focus { outline: none; }
+    .tap-hit:focus-visible + .callout,
+    .label-active .callout {
+      fill: var(--focus);
+    }
+    .flow-arrow { opacity: 0.55; }
+    .flow-arrow.dense { opacity: 0.9; }
+    @keyframes flowPulse {
+      0%, 100% { opacity: 0.35; transform: translateX(0); }
+      50% { opacity: 0.95; transform: translateX(2px); }
+    }
+    .viz.animate .flow-arrow {
+      animation: flowPulse 1.1s ease-in-out infinite;
+    }
+    .viz.animate .flow-arrow:nth-child(2) { animation-delay: 0.15s; }
+    .viz.animate .flow-arrow:nth-child(3) { animation-delay: 0.3s; }
+    .spring-coil { stroke: var(--accent); }
+    .cone-fill { fill: #3A4A72; stroke: #8FA0C4; }
+    .body-stroke { fill: none; stroke: var(--ink); stroke-width: 2.2; }
+    .duct-fill { fill: #E8ECF5; stroke: var(--line); stroke-width: 1; }
+    .actuator-box { fill: var(--canvas); stroke: var(--ink); stroke-width: 1.5; }
+    .controller-box { fill: #FAFBFC; stroke: var(--muted); stroke-width: 1.25; }
+    .orifice-glow {
+      fill: rgba(196, 92, 38, 0.18);
+      stroke: var(--accent);
+      stroke-width: 1.25;
+      stroke-dasharray: 3 2;
+    }
+    .p-mark { font-size: 9px; font-weight: 800; fill: var(--focus); }
+    .legend-bar {
+      display: none;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      padding: 2px 4px 2px;
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+    .viz[data-stage="1"] .legend-bar { display: flex; }
+    .legend-bar button {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 6px 4px;
+      min-height: 36px;
+      min-width: 36px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .legend-bar button[aria-pressed="true"] {
+      color: var(--focus);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Twin Q sparklines (stage 4) */
+    .twin {
+      display: none;
+      margin: 0 10px 4px;
+      padding: 6px 8px;
+      background: #FAFBFC;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      gap: 8px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .twin.on { display: grid; }
+    .twin .spk {
+      min-width: 0;
+    }
+    .twin .spk .lab {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 2px;
+      overflow-wrap: anywhere;
+    }
+    .twin .spk .lab.pi { color: var(--ok); }
+    .twin .spk .lab.damp { color: var(--accent); }
+    .twin .spk .num {
+      font-size: 14px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    .twin svg {
+      width: 100%;
+      height: 28px;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Scrubber / stages */
+    .scrubber {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 10px 2px;
+    }
+    .scrubber button {
+      flex: 0 0 auto;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 0 6px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .scrubber button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .steps {
+      flex: 1 1 auto;
+      display: flex;
+      gap: 3px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .steps::-webkit-scrollbar { display: none; }
+    .steps button {
+      flex: 1 0 auto;
+      min-width: 44px;
+      min-height: 44px;
+      font-size: 12px;
+      padding: 0 4px;
+    }
+    .steps button[aria-current="true"] {
+      background: #E8ECF5;
+      border-color: var(--ink);
+    }
+    .step-caption {
+      flex: 0 0 auto;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 0 12px 4px;
+      min-height: 28px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+
+    /* Sheet */
+    .sheet {
+      flex: 1 1 auto;
+      min-height: 0;
+      background: var(--panel);
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+      border-top: 1px solid var(--line);
+      padding: 6px 12px calc(10px + var(--safe-bottom));
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .grab {
+      width: 36px; height: 4px;
+      border-radius: 999px;
+      background: var(--line);
+      margin: 2px auto 2px;
+    }
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .section-label .en { font-size: 13px; font-weight: 700; }
+    .section-label .zh { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .field label {
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      gap: 6px;
+      align-items: baseline;
+    }
+    .field label .zh { font-size: 11px; color: var(--muted); font-weight: 500; }
+    .field .control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .field input[type="range"] {
+      flex: 1 1 auto;
+      min-width: 0;
+      height: 44px;
+      margin: 0;
+      accent-color: var(--ink);
+      cursor: pointer;
+    }
+    .field .rread {
+      flex: 0 0 auto;
+      min-width: 64px;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .field .dp-drive-hint {
+      margin: 0;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--focus);
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    .field[hidden], .panel[hidden], .tip[hidden] { display: none !important; }
+
+    .seg-row {
+      display: flex;
+      gap: 4px;
+      width: 100%;
+    }
+    .seg-btn {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 44px;
+      padding: 4px 6px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--canvas);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .seg-btn .en { font-size: 12px; font-weight: 700; color: inherit; line-height: 1.15; }
+    .seg-btn .zh { font-size: 10px; font-weight: 500; color: inherit; opacity: 0.9; line-height: 1.15; overflow-wrap: anywhere; }
+    .seg-btn[aria-checked="true"] {
+      background: #E8ECF5;
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    .seg-btn.pi[aria-checked="true"] {
+      background: #E4F2EE;
+      border-color: var(--ok);
+      color: var(--ok);
+    }
+    .seg-btn.damp[aria-checked="true"] {
+      background: var(--warn-bg);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .seg-btn:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    details.tip {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #FAFBFC;
+      padding: 0;
+    }
+    details.tip summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 10px 12px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      gap: 6px;
+    }
+    details.tip summary::-webkit-details-marker { display: none; }
+    details.tip summary::before {
+      content: "▸";
+      color: var(--muted);
+      font-size: 11px;
+    }
+    details.tip[open] summary::before { content: "▾"; }
+    details.tip .tip-body {
+      padding: 0 12px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    details.tip .tip-body strong { color: var(--ink); font-weight: 700; }
+
+    .footnote {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+      padding: 0 2px;
+    }
+    .demo-note {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.35;
+      margin: 0;
+      padding: 0 2px 4px;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 340px) {
+      .seg-btn .zh { display: none; }
+      .field label .zh { display: none; }
+      header.appbar h1 { font-size: 14px; }
+      .live .cell .val { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="phone" id="app">
+    <header class="appbar">
+      <img class="mark" src="../../logos/venturi-valve.svg" alt="" width="32" height="32" />
+      <div class="titles">
+        <h1>Venturi valve</h1>
+        <div class="sub">文丘里風閥運作原理 · MVAC</div>
+      </div>
+      <div class="chip-row">
+        <span class="badge soft" id="illusChip">illustrative／示意</span>
+      </div>
+    </header>
+
+    <div class="live" id="liveStrip" aria-live="polite">
+      <div class="cell">
+        <span class="lab">Q · 風量</span>
+        <span class="val" id="valQ">180<small>L/s</small></span>
+      </div>
+      <div class="cell">
+        <span class="lab">ΔP · 壓降</span>
+        <span class="val" id="valDp">400<small>Pa</small></span>
+      </div>
+      <div class="cell">
+        <span class="lab">位置 · stroke</span>
+        <span class="val" id="valPos">52<small>%</small></span>
+      </div>
+      <div class="q-lead">Q＝行程／校驗曲線推估（示意）· 非現場校驗曲線</div>
+      <div class="dp-hint" id="dpHint" hidden>示意：上游擾動驅動 ΔP</div>
+      <div class="band-warn-msg" id="bandWarn">超出示意工作帶（~150–750 Pa）— PI 可能失效</div>
+    </div>
+
+    <div class="viz animate" id="viz" data-stage="1">
+      <svg viewBox="0 0 360 150" role="img" aria-label="Venturi valve cutaway">
+        <!-- duct body fill -->
+        <path class="duct-fill" d="M12 40 H70 L100 55 H200 L230 40 H348 V110 H230 L200 95 H100 L70 110 H12 Z"/>
+        <!-- body outline -->
+        <path class="body-stroke" d="M12 40 H70 L100 55 H200 L230 40 H348"/>
+        <path class="body-stroke" d="M12 110 H70 L100 95 H200 L230 110 H348"/>
+        <line class="body-stroke" x1="12" y1="40" x2="12" y2="110"/>
+        <line class="body-stroke" x1="348" y1="40" x2="348" y2="110"/>
+
+        <!-- throat markers -->
+        <line x1="100" y1="55" x2="100" y2="95" stroke="#B8C4D8" stroke-width="1" stroke-dasharray="2 2"/>
+        <line x1="200" y1="55" x2="200" y2="95" stroke="#B8C4D8" stroke-width="1" stroke-dasharray="2 2"/>
+
+        <!-- annular orifice highlight (dynamic) -->
+        <ellipse id="orificeGlow" class="orifice-glow" cx="150" cy="75" rx="14" ry="18"/>
+
+        <!-- cone / plunger group (translate by shaft) -->
+        <g id="coneGroup" transform="translate(0,0)">
+          <!-- cone body pointing left into throat -->
+          <path class="cone-fill" id="conePath" d="M128 75 L168 58 V92 Z" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- shaft -->
+          <line id="shaftLine" x1="168" y1="75" x2="248" y2="75" stroke="#8FA0C4" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- spring (visible PI) -->
+          <g id="springGroup" opacity="1">
+            <path class="spring-coil" id="springPath" fill="none" stroke-width="2"
+              d="M172 62 Q176 75 172 88 Q180 75 172 62 Q184 75 172 88 Q188 75 172 62"/>
+          </g>
+        </g>
+
+        <!-- ΔP taps (optional) -->
+        <g id="dpTaps" opacity="0.85">
+          <circle cx="55" cy="40" r="3.5" fill="#EEF1F4" stroke="#174A7C" stroke-width="1.5"/>
+          <circle cx="260" cy="40" r="3.5" fill="#EEF1F4" stroke="#174A7C" stroke-width="1.5"/>
+          <line x1="55" y1="40" x2="55" y2="28" stroke="#174A7C" stroke-width="1.25"/>
+          <line x1="260" y1="40" x2="260" y2="28" stroke="#174A7C" stroke-width="1.25"/>
+        </g>
+
+        <!-- actuator -->
+        <g id="actuator">
+          <rect class="actuator-box" x="236" y="18" width="44" height="28" rx="4"/>
+          <text x="258" y="36" text-anchor="middle" class="callout muted" font-size="8">ACT</text>
+        </g>
+
+        <!-- controller -->
+        <g id="controller">
+          <rect class="controller-box" x="290" y="14" width="50" height="22" rx="3"/>
+          <text x="315" y="29" text-anchor="middle" class="callout muted" font-size="8">CTRL</text>
+        </g>
+
+        <!-- flow arrows -->
+        <g id="flowArrows" fill="#5A6178">
+          <polygon class="flow-arrow" points="28,75 40,69 40,81"/>
+          <polygon class="flow-arrow" points="48,75 60,69 60,81"/>
+          <polygon class="flow-arrow dense" id="arrowThroat1" points="112,75 126,67 126,83"/>
+          <polygon class="flow-arrow dense" id="arrowThroat2" points="130,75 144,65 144,85"/>
+          <polygon class="flow-arrow" points="280,75 292,69 292,81"/>
+          <polygon class="flow-arrow" points="300,75 312,69 312,81"/>
+        </g>
+
+        <!-- Bernoulli static pressure marks (stage 2) -->
+        <g id="bernoulliMarks" opacity="0">
+          <text x="40" y="128" class="p-mark">Ps ↑</text>
+          <text x="150" y="128" class="p-mark accent" fill="#C45C26">Ps ↓ · V ↑</text>
+          <text x="280" y="128" class="p-mark">Ps 部分恢復</text>
+        </g>
+
+        <!-- Callout labels (stage 1). Orifice y=18 center; ΔP y=36 center (stagger); mutual-exclusive via JS; cone／spring spaced -->
+        <g id="labels">
+          <text id="labInlet" class="callout" x="28" y="28">入口 Inlet</text>
+          <text id="labThroat" class="callout" x="118" y="48">喉部／文丘里</text>
+          <text id="labCone" class="callout" x="118" y="108">錐體／Plunger</text>
+          <text id="labOrifice" class="callout accent" x="150" y="18" text-anchor="middle">環形開度</text>
+          <text id="labSpring" class="callout accent" x="228" y="108">彈簧 Spring</text>
+          <text id="labOutlet" class="callout" x="300" y="128">出口 Outlet</text>
+          <text id="labDp" class="callout muted" x="150" y="36" text-anchor="middle" opacity="0">ΔP taps · 可選／常見</text>
+          <text id="labShaft" class="callout muted" x="210" y="68">軸 Shaft</text>
+        </g>
+      </svg>
+      <div class="legend-bar" id="legendBar" role="toolbar" aria-label="Anatomy labels">
+        <button type="button" data-lab="inlet" aria-pressed="false">入口</button>
+        <button type="button" data-lab="throat" aria-pressed="false">喉部／文丘里</button>
+        <button type="button" data-lab="cone" aria-pressed="false">錐體／Plunger</button>
+        <button type="button" data-lab="orifice" aria-pressed="false">環形開度</button>
+        <button type="button" data-lab="spring" aria-pressed="false">彈簧</button>
+        <button type="button" data-lab="shaft" aria-pressed="false">軸</button>
+        <button type="button" data-lab="outlet" aria-pressed="false">出口</button>
+        <button type="button" data-lab="dp" aria-pressed="false">ΔP taps</button>
+        <button type="button" data-lab="act" aria-pressed="false">執行器</button>
+        <button type="button" data-lab="ctrl" aria-pressed="false">控制器</button>
+      </div>
+    </div>
+
+    <div class="twin" id="twinQ" aria-hidden="true">
+      <div class="spk">
+        <div class="lab pi" id="spkPiLab">機械 PI · Q</div>
+        <div class="num" id="spkPiNum">180 L/s</div>
+        <svg viewBox="0 0 120 28" aria-hidden="true"><polyline id="spkPiLine" fill="none" stroke="#2E7D6E" stroke-width="2" points="0,14 120,14"/></svg>
+      </div>
+      <div class="spk">
+        <div class="lab damp" id="spkDampLab">普通 damper · Q</div>
+        <div class="num" id="spkDampNum">180 L/s</div>
+        <svg viewBox="0 0 120 28" aria-hidden="true"><polyline id="spkDampLine" fill="none" stroke="#C45C26" stroke-width="2" points="0,14 120,14"/></svg>
+      </div>
+    </div>
+
+    <div class="scrubber" role="group" aria-label="Teaching stages">
+      <div class="steps" id="steps">
+        <button type="button" data-stage="1" aria-current="true">1</button>
+        <button type="button" data-stage="2">2</button>
+        <button type="button" data-stage="3">3</button>
+        <button type="button" data-stage="4">4</button>
+        <button type="button" data-stage="5">5</button>
+      </div>
+    </div>
+    <div class="step-caption" id="stepCaption">1 · Anatomy · 解剖 — 識件名；入口→喉部→出口</div>
+
+    <section class="sheet" aria-label="Controls">
+      <div class="grab" aria-hidden="true"></div>
+
+      <div class="panel" id="panel1">
+        <div class="section-label"><span class="en">Anatomy</span><span class="zh">解剖標籤</span></div>
+        <p class="footnote">Tap legend chips to highlight parts（同高 callout 互斥：環形開度 ↔ ΔP taps）. Slow airflow arrows on. ΔP taps＝可選／常見監察，唔等於孔板計 Q。</p>
+      </div>
+
+      <div class="panel" id="panel2" hidden>
+        <div class="section-label"><span class="en">Bernoulli</span><span class="zh">喉部流速／靜壓</span></div>
+        <p class="footnote">收縮段→喉部：截面積↓ → 流速↑、靜壓↓（示意）。之後可部分恢復靜壓；閥仍有壓降 — <strong>唔係造冷</strong>。</p>
+      </div>
+
+      <div class="panel" id="panel3" hidden>
+        <div class="section-label"><span class="en">Stroke vs orifice</span><span class="zh">行程 vs 開度</span></div>
+        <div class="field">
+          <label for="sliderStroke"><span class="en">Shaft / cone stroke</span><span class="zh">軸／錐行程</span></label>
+          <div class="control">
+            <input type="range" id="sliderStroke" min="10" max="90" value="52" step="1" aria-valuemin="10" aria-valuemax="90" aria-valuenow="52" aria-label="Shaft stroke percent" />
+            <span class="rread" id="readStroke">52%</span>
+          </div>
+        </div>
+        <p class="footnote">Cone／plunger 沿軸移動 → 環形開度變 → 可達風量帶變（示意）。</p>
+      </div>
+
+      <div class="panel" id="panel4" hidden>
+        <div class="section-label"><span class="en">Disturbance</span><span class="zh">上游壓擾對照</span></div>
+        <div class="field">
+          <label id="lblMode"><span class="en">Mode</span><span class="zh">對照</span></label>
+          <div class="seg-row" role="radiogroup" aria-labelledby="lblMode">
+            <button type="button" class="seg-btn pi" id="btnPi" role="radio" aria-checked="true">
+              <span class="en">機械 PI</span>
+              <span class="zh">彈簧錐守 Q</span>
+            </button>
+            <button type="button" class="seg-btn damp" id="btnDamp" role="radio" aria-checked="false">
+              <span class="en">普通 damper</span>
+              <span class="zh">非 PI · Q 跟 ΔP</span>
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sliderDist"><span class="en">Upstream pressure</span><span class="zh">上游靜壓擾動</span></label>
+          <div class="control">
+            <input type="range" id="sliderDist" min="100" max="900" value="400" step="10" aria-valuemin="100" aria-valuemax="900" aria-valuenow="400" aria-label="Upstream pressure disturbance pascal" />
+            <span class="rread" id="readDist">400 Pa</span>
+          </div>
+          <p class="dp-drive-hint">示意：上游擾動驅動 ΔP</p>
+        </div>
+        <p class="footnote">同一 Qsp：機械 PI 喺示意工作帶內傾向守 Q；普通 damper 風量跟 ΔP 飄。</p>
+      </div>
+
+      <div class="panel" id="panel5" hidden>
+        <div class="section-label"><span class="en">Setpoint</span><span class="zh">改風量設定</span></div>
+        <div class="field">
+          <label for="sliderQsp"><span class="en">Flow setpoint Qsp</span><span class="zh">風量設定</span></label>
+          <div class="control">
+            <input type="range" id="sliderQsp" min="80" max="320" value="180" step="5" aria-valuemin="80" aria-valuemax="320" aria-valuenow="180" aria-label="Flow setpoint litres per second" />
+            <span class="rread" id="readQsp">180 L/s</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sliderDist5"><span class="en">Then disturb ΔP</span><span class="zh">再加壓擾</span></label>
+          <div class="control">
+            <input type="range" id="sliderDist5" min="100" max="900" value="400" step="10" aria-valuemin="100" aria-valuemax="900" aria-valuenow="400" aria-label="Disturbance after setpoint change" />
+            <span class="rread" id="readDist5">400 Pa</span>
+          </div>
+        </div>
+        <p class="footnote">Actuator 移軸改 setpoint；其後壓擾時機械 PI 仍守新設定（示意）。Setpoint 同擾動補償係兩層。</p>
+      </div>
+
+      <details class="tip" id="tipBox" open>
+        <summary>Misconception · 誤解閘</summary>
+        <div class="tip-body" id="tipBody"></div>
+      </details>
+
+      <p class="footnote" id="eFoot">電子控制器 PI＝其他族系（footnote）；本 viz 主線＝機械彈簧錐。以該閥校驗／控制器邏輯為準。</p>
+      <p class="demo-note">Teaching MVAC terminal — illustrative／示意. Not manufacturer curve · not code-required Pa. Preview build on bse-tools — not live on main hub.</p>
+    </section>
+  </div>
+
+  <script>
+(function () {
+  "use strict";
+
+  var stage = 1;
+  var piMode = true; // true = mechanical PI
+  var stroke = 52;   // %
+  var distPa = 400;  // Pa (valve ΔP / upstream disturbance illustrative)
+  var qsp = 180;     // L/s
+  var activeLab = null;
+
+  var BAND_LO = 150;
+  var BAND_HI = 750;
+  var DP_NOM = 400;
+
+  var historyPi = [];
+  var historyDamp = [];
+  var HIST = 24;
+
+  var TIPS = {
+    1: "<strong>Venturi 閥 ≠ 淨係 orifice plate 流量計。</strong> 孔板常係量測元件；文丘里風閥係控制末端（開度＋PI），即使有時用位置／ΔP 推風量。",
+    2: "<strong>Bernoulli 靜壓跌 ≠ 製冷／造冷。</strong> 唔好同 freeze／cooling coil 搞亂；呢度係流動同壓能轉換／壓降。",
+    3: "<strong>開度細 ≠ 永遠風量細。</strong> 若 ΔP／上游靜壓升，非 PI damper 風量可以返升；PI 先係為守 Qsp。",
+    4: "<strong>≠ 普通 butterfly／單葉 damper「VAV box」唔加說明。</strong> 一般 damper VAV 多靠感測＋actuator 閉環；經典文丘里閥仲有錐＋彈簧機械補償。系統名用 <strong>MVAC</strong>。",
+    5: "<strong>Setpoint 同壓擾補償係兩層。</strong> Actuator 改軸／行程＝改 Qsp；彈簧錐喺額定帶內抵消短暫管壓波動。電子 PI＝其他族系 footnote。"
+  };
+
+  var CAPTIONS = {
+    1: "1 · Anatomy · 解剖 — 識件名；入口→喉部→出口",
+    2: "2 · Bernoulli — 喉部流速↑、靜壓↓（示意）；收縮≠造冷",
+    3: "3 · Stroke vs orifice · 行程 vs 開度 — 行程定可用風量帶",
+    4: "4 · Disturbance · 壓擾 — 機械 PI 守 Q vs 普通 damper Q 飄",
+    5: "5 · Setpoint · 改設定 — actuator 移軸；再壓擾仍守新 Qsp"
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function strokeToQsp(s) {
+    // illustrative: 10%→80 L/s, 90%→320 L/s
+    return 80 + (s - 10) * (240 / 80);
+  }
+
+  function orificeOpen(s) {
+    // 0.15 .. 1.0
+    return 0.15 + (s / 100) * 0.85;
+  }
+
+  function springComp(dp) {
+    // higher ΔP → spring compresses → orifice shrinks (PI)
+    var x = (dp - DP_NOM) / 350;
+    return clamp(1 - 0.35 * x, 0.55, 1.25);
+  }
+
+  function qNonPi(qTarget, dp, s) {
+    var open = orificeOpen(s);
+    var ratio = Math.sqrt(Math.max(dp, 40) / DP_NOM);
+    return qTarget * open / orificeOpen(52) * ratio;
+  }
+
+  function qPi(qTarget, dp, s) {
+    var outOfBand = dp < BAND_LO || dp > BAND_HI;
+    if (!outOfBand) {
+      // hold near setpoint with tiny wobble
+      var wobble = 1 + 0.015 * Math.sin(dp / 40);
+      return qTarget * wobble;
+    }
+    // degrade outside band
+    var edge = dp < BAND_LO ? (dp / BAND_LO) : (BAND_HI / Math.max(dp, BAND_HI));
+    var mix = clamp(edge, 0.4, 1);
+    return qTarget * mix + qNonPi(qTarget, dp, s) * (1 - mix) * 0.5;
+  }
+
+  function pushHist(arr, v) {
+    arr.push(v);
+    if (arr.length > HIST) arr.shift();
+  }
+
+  function sparkPoints(arr) {
+    if (!arr.length) return "0,14 120,14";
+    var min = Math.min.apply(null, arr);
+    var max = Math.max.apply(null, arr);
+    var span = Math.max(max - min, 8);
+    var pts = [];
+    for (var i = 0; i < arr.length; i++) {
+      var x = (i / Math.max(arr.length - 1, 1)) * 120;
+      var y = 24 - ((arr[i] - min) / span) * 20;
+      pts.push(x.toFixed(1) + "," + y.toFixed(1));
+    }
+    return pts.join(" ");
+  }
+
+  function setConeVisual(s, dp, showSpring) {
+    // s 10..90 → translate cone along +x (more open = retract to right)
+    var t = ((s - 10) / 80) * 28 - 8; // -8 .. 20
+    $("coneGroup").setAttribute("transform", "translate(" + t.toFixed(1) + ",0)");
+
+    // orifice glow size
+    var open = orificeOpen(s);
+    if (showSpring && piMode) open *= springComp(dp);
+    var rx = 6 + open * 12;
+    var ry = 10 + open * 12;
+    $("orificeGlow").setAttribute("rx", rx.toFixed(1));
+    $("orificeGlow").setAttribute("ry", ry.toFixed(1));
+
+    // spring compression visual
+    $("springGroup").setAttribute("opacity", showSpring ? "1" : "0.15");
+    var compress = showSpring && piMode ? springComp(dp) : 1;
+    var sc = 1 / compress;
+    $("springPath").setAttribute("transform", "translate(170,75) scale(" + sc.toFixed(2) + ",1) translate(-170,-75)");
+  }
+
+  function setBernoulli(on) {
+    $("bernoulliMarks").setAttribute("opacity", on ? "1" : "0");
+    var a1 = $("arrowThroat1");
+    var a2 = $("arrowThroat2");
+    if (on) {
+      a1.setAttribute("points", "108,75 128,64 128,86");
+      a2.setAttribute("points", "132,75 152,62 152,88");
+    } else {
+      a1.setAttribute("points", "112,75 126,67 126,83");
+      a2.setAttribute("points", "130,75 144,65 144,85");
+    }
+  }
+
+  function highlightLab(name) {
+    // Toggle-off if same chip tapped again (stage 1: back to default single orifice)
+    if (name && activeLab === name) name = null;
+    activeLab = name;
+    var defaults = {
+      labInlet: "#1E2A50", labThroat: "#1E2A50", labCone: "#1E2A50",
+      labOrifice: "#C45C26", labSpring: "#C45C26", labShaft: "#5A6178",
+      labOutlet: "#1E2A50", labDp: "#5A6178"
+    };
+    Object.keys(defaults).forEach(function (id) {
+      var el = $(id);
+      el.setAttribute("fill", defaults[id]);
+      el.style.fontSize = "";
+    });
+    // Mutual exclusion for overlapping top callouts (環形開度 ↔ ΔP taps).
+    // Default stage 1: only orifice visible. ΔP only when its chip is active.
+    // Y staggered (orifice y=18, ΔP y=36). Mutual-exclusive so both never opaque together.
+    var showDp = name === "dp";
+    var showOrifice = name !== "dp"; // hide orifice while ΔP chip active
+    if (stage !== 1 && name !== "dp" && name !== "orifice") {
+      showDp = false;
+      showOrifice = true;
+    }
+    $("labDp").setAttribute("opacity", showDp ? "1" : "0");
+    $("labOrifice").setAttribute("opacity", showOrifice ? "1" : "0");
+
+    var map = {
+      inlet: "labInlet", throat: "labThroat", cone: "labCone",
+      orifice: "labOrifice", spring: "labSpring", shaft: "labShaft",
+      outlet: "labOutlet", dp: "labDp"
+    };
+    if (name && map[name]) {
+      $(map[name]).setAttribute("fill", "#174A7C");
+      $(map[name]).style.fontSize = "10px";
+    }
+    $("actuator").querySelector("rect").setAttribute("stroke", name === "act" ? "#174A7C" : "#1E2A50");
+    $("actuator").querySelector("rect").setAttribute("stroke-width", name === "act" ? "2.5" : "1.5");
+    $("controller").querySelector("rect").setAttribute("stroke", name === "ctrl" ? "#174A7C" : "#5A6178");
+    $("controller").querySelector("rect").setAttribute("stroke-width", name === "ctrl" ? "2.25" : "1.25");
+    document.querySelectorAll("#legendBar button").forEach(function (b) {
+      b.setAttribute("aria-pressed", name && b.getAttribute("data-lab") === name ? "true" : "false");
+    });
+  }
+
+  function update() {
+    // derive targets
+    var s = stroke;
+    var dp = distPa;
+    var target;
+    if (stage === 5) {
+      target = qsp;
+      // sync stroke from qsp for viz
+      s = clamp(10 + (qsp - 80) * 80 / 240, 10, 90);
+      stroke = s;
+      $("sliderStroke") && ($("sliderStroke").value = String(Math.round(s)));
+      dp = +$("sliderDist5").value;
+      distPa = dp;
+    } else if (stage === 3) {
+      target = strokeToQsp(s);
+      qsp = target;
+    } else if (stage === 4) {
+      target = qsp;
+    } else {
+      target = strokeToQsp(s);
+      qsp = target;
+    }
+
+    var qPI = qPi(target, dp, s);
+    var qDamp = qNonPi(target, dp, s);
+    var qShow = (stage === 4 && !piMode) ? qDamp : qPI;
+    // stages 1-3,5 always show PI-line behaviour for main Q (teaching mainline)
+    if (stage !== 4) qShow = qPI;
+
+    var outOfBand = dp < BAND_LO || dp > BAND_HI;
+
+    $("valQ").innerHTML = Math.round(qShow) + "<small>L/s</small>";
+    $("valDp").innerHTML = Math.round(dp) + "<small>Pa</small>";
+    $("valPos").innerHTML = Math.round(s) + "<small>%</small>";
+
+    var live = $("liveStrip");
+    if (outOfBand && (stage === 4 || stage === 5)) live.classList.add("warn-band");
+    else live.classList.remove("warn-band");
+
+    var showSpring = stage >= 2 && !(stage === 4 && !piMode);
+    setConeVisual(s, dp, showSpring);
+    // damper mode: hide orifice glow dash emphasis slightly
+    $("orificeGlow").setAttribute("stroke-dasharray", (stage === 4 && !piMode) ? "0" : "3 2");
+    setBernoulli(stage === 2);
+
+    // twin sparklines stage 4
+    var twin = $("twinQ");
+    if (stage === 4) {
+      twin.classList.add("on");
+      twin.setAttribute("aria-hidden", "false");
+      pushHist(historyPi, qPI);
+      pushHist(historyDamp, qDamp);
+      $("spkPiNum").textContent = Math.round(qPI) + " L/s";
+      $("spkDampNum").textContent = Math.round(qDamp) + " L/s";
+      $("spkPiLine").setAttribute("points", sparkPoints(historyPi));
+      $("spkDampLine").setAttribute("points", sparkPoints(historyDamp));
+    } else {
+      twin.classList.remove("on");
+      twin.setAttribute("aria-hidden", "true");
+    }
+
+    // reads
+    $("readStroke").textContent = Math.round(s) + "%";
+    $("readDist").textContent = Math.round(+$("sliderDist").value) + " Pa";
+    $("readQsp").textContent = Math.round(+$("sliderQsp").value) + " L/s";
+    $("readDist5").textContent = Math.round(+$("sliderDist5").value) + " Pa";
+
+    $("sliderStroke").setAttribute("aria-valuenow", String(Math.round(s)));
+    $("sliderDist").setAttribute("aria-valuenow", $("sliderDist").value);
+    $("sliderQsp").setAttribute("aria-valuenow", $("sliderQsp").value);
+    $("sliderDist5").setAttribute("aria-valuenow", $("sliderDist5").value);
+
+    // Stage 1 default: only 環形開度 (ΔP hidden until chip). Mutual-exclusive with highlightLab.
+    if (stage === 1 && !activeLab) {
+      $("labDp").setAttribute("opacity", "0");
+      $("labOrifice").setAttribute("opacity", "1");
+    } else if (stage === 1 && activeLab === "dp") {
+      $("labDp").setAttribute("opacity", "1");
+      $("labOrifice").setAttribute("opacity", "0");
+    } else if (stage === 1 && activeLab === "orifice") {
+      $("labDp").setAttribute("opacity", "0");
+      $("labOrifice").setAttribute("opacity", "1");
+    }
+
+    // ΔP drive hint near live strip on disturbance stages
+    var hint = $("dpHint");
+    if (hint) hint.hidden = !(stage === 4 || stage === 5);
+  }
+
+  function setStage(n) {
+    stage = n;
+    document.querySelectorAll("#steps button").forEach(function (b) {
+      b.setAttribute("aria-current", +b.getAttribute("data-stage") === n ? "true" : "false");
+    });
+    $("stepCaption").textContent = CAPTIONS[n];
+    for (var i = 1; i <= 5; i++) {
+      var p = $("panel" + i);
+      if (p) p.hidden = i !== n;
+    }
+    $("tipBody").innerHTML = TIPS[n];
+    $("viz").setAttribute("data-stage", String(n));
+    $("viz").classList.toggle("animate", n === 1 || n === 2);
+
+    // reset spark history when entering 4
+    if (n === 4) {
+      historyPi = [];
+      historyDamp = [];
+      // keep qsp from current stroke so compare is fair
+      qsp = strokeToQsp(stroke);
+      // seed spark history across a mild ΔP sweep so twin contrast is visible before first drag
+      var seedTarget = qsp;
+      for (var si = 0; si < HIST; si++) {
+        var seedDp = 250 + si * (500 / (HIST - 1));
+        historyPi.push(qPi(seedTarget, seedDp, stroke));
+        historyDamp.push(qNonPi(seedTarget, seedDp, stroke));
+      }
+    }
+    if (n === 5) {
+      $("sliderQsp").value = String(Math.round(qsp));
+      $("sliderDist5").value = String(Math.round(distPa));
+    }
+    if (n === 3) {
+      $("sliderStroke").value = String(Math.round(stroke));
+    }
+    if (n === 4) {
+      $("sliderDist").value = String(Math.round(distPa));
+    }
+
+    if (n === 1) highlightLab(null);
+    else if (activeLab) highlightLab(activeLab);
+
+    update();
+  }
+
+  // wire stages
+  document.querySelectorAll("#steps button").forEach(function (b) {
+    b.addEventListener("click", function () { setStage(+b.getAttribute("data-stage")); });
+  });
+
+  // legend
+  document.querySelectorAll("#legendBar button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      highlightLab(b.getAttribute("data-lab"));
+    });
+  });
+
+  $("sliderStroke").addEventListener("input", function () {
+    stroke = +this.value;
+    if (stage === 3) qsp = strokeToQsp(stroke);
+    update();
+  });
+  $("sliderDist").addEventListener("input", function () {
+    distPa = +this.value;
+    update();
+  });
+  $("sliderQsp").addEventListener("input", function () {
+    qsp = +this.value;
+    stroke = clamp(10 + (qsp - 80) * 80 / 240, 10, 90);
+    update();
+  });
+  $("sliderDist5").addEventListener("input", function () {
+    distPa = +this.value;
+    update();
+  });
+
+  $("btnPi").addEventListener("click", function () {
+    piMode = true;
+    $("btnPi").setAttribute("aria-checked", "true");
+    $("btnDamp").setAttribute("aria-checked", "false");
+    update();
+  });
+  $("btnDamp").addEventListener("click", function () {
+    piMode = false;
+    $("btnPi").setAttribute("aria-checked", "false");
+    $("btnDamp").setAttribute("aria-checked", "true");
+    update();
+  });
+
+  // init
+  $("tipBody").innerHTML = TIPS[1];
+  setStage(1);
+})();
+  </script>
+</body>
+</html>
