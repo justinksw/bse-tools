@@ -538,9 +538,6 @@
         <h1>Venturi valve</h1>
         <div class="sub">文丘里風閥運作原理 · MVAC</div>
       </div>
-      <div class="chip-row">
-        <span class="badge soft" id="illusChip">illustrative／示意</span>
-      </div>
     </header>
 
     <div class="live" id="liveStrip" aria-live="polite">
@@ -556,7 +553,7 @@
         <span class="lab">位置 · stroke</span>
         <span class="val" id="valPos">52<small>%</small></span>
       </div>
-      <div class="q-lead">Q＝行程／校驗曲線推估（示意）· 非現場校驗曲線</div>
+      <div class="q-lead" id="q-lead">Q＝行程／校驗曲線推估（示意）</div>
       <div class="dp-hint" id="dpHint" hidden>示意：上游擾動驅動 ΔP</div>
       <div class="band-warn-msg" id="bandWarn">超出示意工作帶（~150–750 Pa）— PI 可能失效</div>
     </div>
@@ -688,7 +685,7 @@
 
       <div class="panel" id="panel2" hidden>
         <div class="section-label"><span class="en">Bernoulli</span><span class="zh">喉部流速／靜壓</span></div>
-        <p class="footnote">收縮段→喉部：截面積↓ → 流速↑、靜壓↓（示意）。之後可部分恢復靜壓；閥仍有壓降 — <strong>唔係造冷</strong>。</p>
+        <p class="footnote">收縮段→喉部：截面積↓ → 流速↑、靜壓↓。之後可部分恢復靜壓；閥仍有壓降 — <strong>唔係造冷</strong>。</p>
       </div>
 
       <div class="panel" id="panel3" hidden>
@@ -787,7 +784,7 @@
 
   var CAPTIONS = {
     1: "1 · Anatomy · 解剖 — 識件名；入口→喉部→出口",
-    2: "2 · Bernoulli — 喉部流速↑、靜壓↓（示意）；收縮≠造冷",
+    2: "2 · Bernoulli — 喉部流速↑、靜壓↓；收縮≠造冷",
     3: "3 · Stroke vs orifice · 行程 vs 開度 — 行程定可用風量帶",
     4: "4 · Disturbance · 壓擾 — 機械 PI 守 Q vs 普通 damper Q 飄",
     5: "5 · Setpoint · 改設定 — actuator 移軸；再壓擾仍守新 Qsp"
