@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Venturi valve｜文丘里風閥</title>
+  <meta name="robots" content="noindex" />
+  <title>Venturi valve｜文丘里風閥 · PREVIEW</title>
   <style>
     :root {
       --canvas: #EEF1F4;
@@ -74,6 +75,17 @@
       line-height: 1.3;
       overflow-wrap: anywhere;
       word-break: keep-all;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      color: #8a4b12;
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-bd);
+      border-radius: 999px;
+      padding: 3px 7px;
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
     .hero {
       flex: 0 0 auto;
@@ -569,6 +581,7 @@
         <h1>Venturi valve</h1>
         <div class="sub">文丘里風閥運作原理 · MVAC</div>
       </div>
+      <span class="badge">PREVIEW</span>
     </header>
 
     <p class="hero" id="heroLine">風管壓力有變時，呢個閥都盡量守住你設定嘅風量。</p>
@@ -766,7 +779,7 @@
           <div class="seg-row" role="radiogroup" aria-labelledby="lblMode">
             <button type="button" class="seg-btn pi" id="btnPi" role="radio" aria-checked="true">
               <span class="en">spring-cone</span>
-              <span class="zh">mechanical PI · 守 Q</span>
+              <span class="zh">pressure-independent (PI) · 守 Q</span>
             </button>
             <button type="button" class="seg-btn damp" id="btnDamp" role="radio" aria-checked="false">
               <span class="en">damper</span>
@@ -809,7 +822,7 @@
         <div class="tip-body" id="tipBody"></div>
       </details>
 
-      <p class="chrome-note" id="eFoot">本頁主線＝mechanical spring-cone PI。有啲產品用 electronic controller 做 PI，以該閥／廠方說明為準。</p>
+      <p class="chrome-note" id="eFoot">呢頁教嘅係 mechanical spring-cone 做嘅 pressure-independent (PI)。有啲產品用 electronic controller 做 PI，以該閥／廠方說明為準。</p>
       <p class="demo-note">MVAC terminal · bse-tools</p>
     </section>
   </div>
